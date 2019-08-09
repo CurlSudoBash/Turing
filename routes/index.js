@@ -4,7 +4,7 @@ const userModel = require('../models/userModel');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  return res.render('home');
+  return res.render('auth/signin');
 });
 
 router.get('/login', function(req, res, next) {

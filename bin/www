@@ -21,7 +21,6 @@ dbConnection.once('open', () => {
   var app = require('../app');
     
   app.set('port', port);
-  app.set('view engine', 'twig')
 
   /**
    * Create HTTP server.
