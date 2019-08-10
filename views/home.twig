@@ -1,7 +1,7 @@
 {% extends 'templates/public.twig' %}
 
 {% block content %}
-	<form class="form-auth-small" action="{{ path_for('auth.signin') }}" method="post">
+	<form class="form-auth-small" method="post">
 		<div class="form-group">
 			<label for="username" class="control-label sr-only">Username</label>
 			<input type="input" class="form-control" id="username" name="username" value="username" placeholder="username">

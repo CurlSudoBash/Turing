@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 userSchema = new Schema({
-    email: {
+    _id: {
         type: String,
         required: true
     },
@@ -16,8 +16,18 @@ userSchema = new Schema({
 const user = mongoose.model('User', userSchema);
 
 const userModel = {
-    fetchOrSaveUser: (details) => {
-        return user.findOneAndUpdate(details, details, { upsert: true });
+    fetchUser: (details) => {
+        return user.findOne(details).lean().exec();
+    },
+
+    saveUser: (details, cb) => {
+        const newUser = new user(details);
+        newUser.save(function(err) {
+            if (err) {
+                return cb(false);
+            }
+            return cb(true);
+        });
     }
 };
 

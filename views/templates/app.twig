@@ -59,36 +59,21 @@
 
 <script src="/assets/scripts/main.js"></script>
 
-{% if current_path == path_for('ra.dashboard') %}
-	<script src="/assets/scripts/ra-dashboard.js"></script>
-{% endif %}
 
-{% if current_path == path_for('ra.candidates') %}
-	<script src="/assets/scripts/ra-candidate.js"></script>
-{% endif %}
-{% if current_path == path_for('ra.addCandidate') %}
-	<script src="/assets/scripts/ra-addCandidate.js"></script>
-{% endif %}
+<script src="/assets/scripts/ra-dashboard.js"></script>
 
+<script src="/assets/scripts/ra-candidate.js"></script>
+<script src="/assets/scripts/ra-addCandidate.js"></script>
 
-{% if current_path == path_for('ea.dashboard') %}
 <script src="/assets/scripts/ea-dashboard.js"></script>
-{% endif %}
 
-{% if current_path == path_for('ea.vote') %}
 <script src="/assets/scripts/ea-vote.js"></script>
-{% endif %}
 
-{% if current_path == path_for('ea.balance') %}
-	<script src="/assets/scripts/ea-balance.js"></script>
-{% endif %}
-{% if current_path == path_for('ea.fee') %}
-	<script src="/assets/scripts/ea-fee.js"></script>
-
-	<!-- Bitcoin JS -->
-	<script src="/assets/vendor/bitcoinjs/bitcoinjs-min.js"></script>
-	<!-- Hash -->
-	<script src="/assets/vendor/ring-signature/sha1.js"></script>
-{% endif %}
+<script src="/assets/scripts/ea-balance.js"></script>
+<script src="/assets/scripts/ea-fee.js"></script>
+<!-- Bitcoin JS -->
+<script src="/assets/vendor/bitcoinjs/bitcoinjs-min.js"></script>
+<!-- Hash -->
+<script src="/assets/vendor/ring-signature/sha1.js"></script>`
 </body>
 </html>

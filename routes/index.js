@@ -4,27 +4,58 @@ const userModel = require('../models/userModel');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  return res.render('auth/signin');
+  if (!req.session.login) {
+    return res.redirect('/login');
+  }
+  return res.render('ra/dashboard');
 });
 
 router.get('/login', function(req, res, next) {
-  if (res.session.login) {
-    return res.render('home');
+  return res.render('auth/signin');
+})
+
+router.get('/signup', function(req, res, next) {
+  return res.render('auth/signup');
+})
+
+router.post('/login', function(req, res, next) {
+  if (req.session.login) {
+    return res.redirect('/');
   }
   const re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-  const email = req.body.email;
+  const _id = req.body.username;
   const password = req.body.password;
 
-  if (!re.test(String(email).toLowerCase())) {
-    return res.render('login');
+  if (!re.test(String(_id).toLowerCase())) {
+    //return res.render('auth/signin');
   }
-  userModel.fetchOrSaveUser({ email, password }).then((user) => {
-    return res.render('home');
+  userModel.fetchUser({ _id, password }).then((user) => {
+    if (!user) {
+      return res.redirect('/login');
+    } else {
+      req.session.login = true;
+      res.redirect('/');
+    }
   }).catch((err) => {
     console.log("Error during login");
-    return res.render('login');
+    return res.redirect('/login');
   })
+});
 
+router.post('/signup', function(req, res, next) {
+  if (req.session.login) {
+    return res.redirect('/');
+  }
+
+  const _id = req.body.username;
+  const password = req.body.password;
+
+  userModel.saveUser({ _id, password }, (status) => {
+    if (!status) {
+      return res.redirect('/signup');
+    }
+    return res.redirect('/');
+  });
 });
 
 module.exports = router;

@@ -49,12 +49,10 @@
 <!-- SweetAlert Plugins -->
 <script src="/assets/vendor/sweet-alert/sweetalert.min.js"></script>
 
-{% if current_path == path_for('vote.home') %}
+
 	<!-- Load Description -->
 	<script src="/assets/scripts/home.js"></script>
-{% endif %}
 
-{% if current_path == path_for('vote.vote') %}
 
 	<!-- JSencript Plugins -->
 	<script src="/assets/vendor/jsencrypt/jsencrypt.min.js"></script>
@@ -85,9 +83,6 @@
 	<!-- Vote Now -->
 	<script src="/assets/scripts/vote-now.js"></script>
 
-{% endif %}
-
-{% if current_path == path_for('vote.fill') %}
 	<!-- JSencript Plugins -->
 	<script src="/assets/vendor/jsencrypt/jsencrypt.min.js"></script>
 
@@ -99,10 +94,7 @@
 
 	<!-- Vote Fill -->
 	<script src="/assets/scripts/vote-fill.js"></script>
-{% endif %}
 
-
-{% if current_path == path_for('verify.now') %}
 	<!-- Loading Candidates -->
 	<script src="/assets/scripts/candidate.js"></script>
 	<!-- Vote Basic -->
@@ -121,9 +113,7 @@
 	<!-- Verify Page -->
 	<script src="/assets/scripts/verify.js"></script>
 
-{% endif %}
 
-{% if current_path == path_for('tally.now') %}
 	<!-- Chartist Plugins -->
 	<script src="/assets/vendor/chartist/js/chartist.min.js"></script>
 	<!-- Basic Functions -->
@@ -142,8 +132,6 @@
 	<!-- If current page is Tally -->
 	<script src="/assets/scripts/tally.js"></script>
 
-
-{% endif %}
 
 
 </body>
