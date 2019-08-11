@@ -134,6 +134,29 @@ router.get('/api/elections', function(req, res, next) {
   })
 });
 
+router.post('/api/registerVoter', async (req, res, next) => {
+  const { epicNumber, constituency, electionId } = req.body;
+  let authenticationAddress;
+  electionModel.fetchElectionById.then((election) => {
+    authenticationAddress = election.authenticationAddress;
+    blockchain.registerVoter({ voter: epicNumber, constituency, authenticationAddress }).then((status) => {
+      if (!status) {
+        return res.json({
+          success: false
+        })
+      }
+      return res.json({
+        success: true
+      })
+    }).catch((err) => {
+      return res.json({
+        success: false,
+        err
+      });
+    })
+  });
+});
+
 router.get('/login', function(req, res, next) {
   return res.render('auth/signin');
 });
