@@ -12,7 +12,7 @@
     "express": "^4.16.4",
     "express-session": "^1.16.2",
     "http-errors": "~1.6.3",
-    "mongoose": "^5.6.8",
+    "mongoose": "^5.7.5",
     "morgan": "~1.9.1",
     "scrypt": "^6.0.3",
     "twig": "^1.13.3",
